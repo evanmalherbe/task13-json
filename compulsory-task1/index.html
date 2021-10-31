@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Use external Bootstrap stylesheet -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+
+    <!-- use external stylesheet styles.css-->
+    <link href="css/styles.css" rel="stylesheet" type="text/css"> 
+    <!-- Use cars.js external Javascript file -->
+    <script src="music.js"></script> 
+    <title>Task 13 - Compulsory task 1</title>
+</head>
+<body onload="displayMusic()">
+
+    <!-- main container div for whole page -->
+    <div class="container"> 
+
+        <!-- "topItems" class to style top section of page-->
+        <div class="topItems"> 
+            <div class="initialText">
+                <h1>Music makes the world go round!</h1>
+                <p>This useful webpage lets you enter and store information about your favourite music. 
+                    Try it out.
+                </p>    
+            </div>
+
+            <!-- Imag of paino on top right of page -->
+            <div class="topImage"><img src="images/piano.jpg" alt="Piano and sheet music" class="image"></div>
+
+        <!-- "topItems" div ends-->
+        </div>
+
+        <!-- Contains 2 containers, a left and right box. It's the music input and output section. Left side div 
+            box for initial input of music info by user, right side div box for editing/deleting entries and 
+            display of stored music entries -->
+        <div class="musicBoxes">
+
+            <!-- Left side div box for input of music entries by user -->
+            <div class="musicInput" id="musicInput">
+
+                <p><b>Use this form to enter and store info about your favourite music tracks!</b></p>
+
+                <!-- Form to enter music info to be stored in objects. Styled with Bootstrap -->
+                <form>
+                    <div class="form-group">
+                        <label for="artistFName">Enter artist first name:</label>
+                        <input type="text" class="form-control" id="artistFName" placeholder="Artist first name">
+                    </div>
+                    <div class="form-group">
+                        <label for="artistSurname">Enter artist surname:</label>
+                        <input type="text" class="form-control" id="artistSurname" placeholder="Artist surname">
+                    </div>
+                    <div class="form-group">
+                        <label for="songTitle">Enter song title:</label>
+                        <input type="text" class="form-control" id="songTitle" placeholder="Song title">
+                    </div>
+                    <div class="form-group">
+                        <label for="albumName">Enter album name:</label>
+                        <input type="text" class="form-control" id="albumName" placeholder="Album name">
+                    </div>
+                    <div class="form-group">
+                        <label for="genreName">Enter album name:</label>
+                        <input type="text" class="form-control" id="genreName" placeholder="Genre of music">
+                    </div>
+
+                    <!-- When "Store info" button is clicked, it calls the "addMusic()" function that stores the 
+                    user's entries in an object, which also gets put into sessionStorage -->
+                    <button class="btn btn-primary" onclick="addMusic()">Store info</button>
+                
+                <!-- Form to enter music info ends -->
+                </form> 
+
+            <!-- Left side div box for music entry/input ends -->
+            </div> 
+            
+            <!-- Right side div box for music info output/display and editing/deleting of entries -->
+            <div class="musicOutput" id="musicOutput">
+
+                <!-- Div to contain and style form used to edit or delete music track entries -->
+                <div id="formToEdit" class="formToEdit">
+                    <p><b>Easily delete or edit tracks from your music storage below</b></p>
+
+                    <!-- Form to edit or delete music information -->
+                    <form id="changeSongForm">
+                        <div class="form-group">
+                            <label for="artistToChange">Select artist to edit\delete:</label>
+                            <select onchange="selectArtistToEdit(this.value)" class="form-control"
+                             id="artistToChange">
+                                <option value="">---</option>
+                            </select>
+                        </div>
+                        
+                        <div id="editOrDeleteMsg" class="form-group"></div>
+                        <div id="editOptionsDiv" class="form-group"></div>
+
+                    <!-- Form to edit/delete music info ends -->
+                    </form> 
+
+                <!-- container for form to edit/delete music info ends-->
+                </div>
+                
+                <!-- this div is populated with the objects in storage, which occurs when the page loads
+                by calling the function called "displayMusic()"-->
+                <div id="displayMusic">
+                    <h3>Tracks currently in storage</h3> 
+                </div>      
+
+            <!-- Right side div box ends-->
+            </div>   
+
+        <!-- Div containing both left and right side music boxes ends -->
+        </div> 
+
+    <!-- Main container div ends -->
+    </div> 
+    
+</body>
+</html>
